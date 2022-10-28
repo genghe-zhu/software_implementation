@@ -1,0 +1,313 @@
+
+test usage syntax errors
+
+test no args
+./querier
+usage: ./querier pageDirectory indexFilename
+
+
+test not crawled directory
+./querier data ~cs50/data/tse-output/letters-index-6
+data is not a directory.
+
+
+test not writbale directory
+./querier ~cs50/data/tse-output/letters-depth-6/ ~cs50/data/tse-output/letters-index-7
+indexFile /net/ifs-users/cs50/data/tse-output/letters-index-7 is not readable.
+
+
+run examples from lecture notes
+Query: first and search 
+score   1 doc   8: http://old-www.cs.dartmouth.edu/~cs50/data/tse/letters/D.html
+score   1 doc   3: http://old-www.cs.dartmouth.edu/~cs50/data/tse/letters/B.html
+-----------------------------------------------
+Query: tiny search engine 
+No documents match.
+-----------------------------------------------
+Query: note we lowercase the query first 
+No documents match.
+-----------------------------------------------
+Query: spaces do not matter 
+No documents match.
+-----------------------------------------------
+Error: bad character '-' in query.
+Error: bad character '5' in query.
+Query: and 
+Error: 'and' cannot be first
+Query: or 
+Error: 'or' cannot be first
+Query: what about and 
+Error: 'and' cannot be last
+Query: what about or 
+Error: 'or' cannot be last
+Query: cs and or digit 
+Error: 'and' and 'or' cannot be adjacent
+
+
+run simple test from fuzzquery letters-index-6
+Query: outvies or ccis 
+No documents match.
+-----------------------------------------------
+Query: page and fourier or graph transform home or breadth 
+score   1 doc   3: http://old-www.cs.dartmouth.edu/~cs50/data/tse/letters/B.html
+-----------------------------------------------
+Query: graph or fast search biology breadth 
+score   1 doc   5: http://old-www.cs.dartmouth.edu/~cs50/data/tse/letters/G.html
+-----------------------------------------------
+Query: fast search tse 
+No documents match.
+-----------------------------------------------
+Query: for 
+score   1 doc   9: http://old-www.cs.dartmouth.edu/~cs50/data/tse/letters/C.html
+score   1 doc   8: http://old-www.cs.dartmouth.edu/~cs50/data/tse/letters/D.html
+score   1 doc   7: http://old-www.cs.dartmouth.edu/~cs50/data/tse/letters/F.html
+score   1 doc   6: http://old-www.cs.dartmouth.edu/~cs50/data/tse/letters/H.html
+score   1 doc   5: http://old-www.cs.dartmouth.edu/~cs50/data/tse/letters/G.html
+score   1 doc   4: http://old-www.cs.dartmouth.edu/~cs50/data/tse/letters/E.html
+score   1 doc   3: http://old-www.cs.dartmouth.edu/~cs50/data/tse/letters/B.html
+score   1 doc   2: http://old-www.cs.dartmouth.edu/~cs50/data/tse/letters/A.html
+score   1 doc   1: http://old-www.cs.dartmouth.edu/~cs50/data/tse/letters/index.html
+-----------------------------------------------
+Query: algorithm 
+score   1 doc   2: http://old-www.cs.dartmouth.edu/~cs50/data/tse/letters/A.html
+-----------------------------------------------
+Query: algorithm or graph and this or huffman or page or tse 
+score   2 doc   1: http://old-www.cs.dartmouth.edu/~cs50/data/tse/letters/index.html
+score   1 doc   6: http://old-www.cs.dartmouth.edu/~cs50/data/tse/letters/H.html
+score   1 doc   2: http://old-www.cs.dartmouth.edu/~cs50/data/tse/letters/A.html
+-----------------------------------------------
+Query: breadth and for or page and gamboised or transform and page 
+score   1 doc   3: http://old-www.cs.dartmouth.edu/~cs50/data/tse/letters/B.html
+-----------------------------------------------
+Query: traversal and lotophagi huffman and page 
+No documents match.
+-----------------------------------------------
+Query: specif and overfactitious exuviate or breadth 
+score   1 doc   3: http://old-www.cs.dartmouth.edu/~cs50/data/tse/letters/B.html
+-----------------------------------------------
+
+
+run test from fuzzquery wilipedia-index-2
+Query: metacompilation straw 
+No documents match.
+-----------------------------------------------
+Query: dissolution takayanagi apologetically 
+No documents match.
+-----------------------------------------------
+Query: vstudio or harvesting and nigeljaquiss 
+score   1 doc 1347: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/MSVC.html
+score   1 doc 1229: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Microsoft_Visual_C%2b%2b.html
+score   1 doc 1203: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Volatile_variable.html
+score   1 doc 1076: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Visual_C%2b%2b.html
+score   1 doc 1055: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Visual_Basic_.html
+-----------------------------------------------
+Query: browing nutr or defouw and mishra 
+No documents match.
+-----------------------------------------------
+Query: pleo antisexualism and comjnl 
+No documents match.
+-----------------------------------------------
+Query: bertalanffy and kochanowski and goodson optimj 
+No documents match.
+-----------------------------------------------
+Query: pozna or wyrcean or nucleotides wrappers activators pichurim 
+score   1 doc 832: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Anglo-Saxon_language.html
+score   1 doc 1637: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Cryptanalysis_of_the_Enigma.html
+-----------------------------------------------
+Query: kalergi or arranged or kamir 
+score   4 doc 520: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Pine.html
+score   3 doc 481: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Sexual_harassment.html
+score   3 doc 1645: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Enigma_machine.html
+score   3 doc 337: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/2004_Athens_Olympics.html
+score   2 doc 1637: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Cryptanalysis_of_the_Enigma.html
+score   2 doc 1590: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Alan_Turing.html
+score   2 doc 1547: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Philosophy_of_mind.html
+score   2 doc 1513: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Samuel_Morse.html
+score   2 doc 1167: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Bsearch.html
+score   2 doc 1082: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Microsoft_Visual_Studio.html
+score   2 doc 959: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Make_(software).html
+score   2 doc 916: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/ASCII.html
+score   2 doc 491: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Dartmouth_College_student_groups.html
+score   2 doc 450: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/United_States_Senate.html
+score   2 doc 379: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/NBC.html
+score   2 doc 335: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Helsinki.html
+score   2 doc 282: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Dartmouth_Forensic_Union.html
+score   2 doc 281: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Dartmouth_College_Marching_Band.html
+score   2 doc  89: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Locality_of_reference.html
+score   2 doc 935: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Bill_Clinton.html
+score   1 doc 1671: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Computer_programming.html
+score   1 doc 1665: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Digital_computer.html
+score   1 doc 1664: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Abacus.html
+score   1 doc 1662: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Gottfried_Leibniz.html
+score   1 doc 1659: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Mechanical_calculator.html
+score   1 doc 1658: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Arithmometer.html
+score   1 doc 1654: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Computer.html
+score   1 doc 1649: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Punched_card.html
+score   1 doc 1624: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Entertainment.html
+score   1 doc 1617: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Video_editing.html
+score   1 doc 1597: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Computer_system.html
+score   1 doc 1589: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Category_theory.html
+score   1 doc 1565: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Data_structures.html
+score   1 doc 1517: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Health_Informatics.html
+score   1 doc 1515: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Leibniz.html
+score   1 doc 1514: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Boole.html
+score   1 doc 1430: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Automation.html
+score   1 doc 1422: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Mining_engineering.html
+score   1 doc 1365: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Computer_science.html
+score   1 doc 1337: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/BCPL.html
+score   1 doc 1306: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Operating_systems.html
+score   1 doc 1269: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Source_code.html
+score   1 doc 1241: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Character_encoding.html
+score   1 doc 1196: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Multiplication.html
+score   1 doc 1118: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Comparison_of_programming_languages.html
+score   1 doc 1028: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Operating_system.html
+score   1 doc 999: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Server_(computing).html
+score   1 doc 994: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Computer_networking.html
+score   1 doc 932: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Computer_printer.html
+score   1 doc 851: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/License_plate.html
+score   1 doc 848: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Santa_Cruz_Operation.html
+score   1 doc 650: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Ring_(computer_security).html
+score   1 doc 631: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/OS/2.html
+score   1 doc 623: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Computer_network.html
+score   1 doc 614: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Latin_language.html
+score   1 doc 613: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Latin.html
+score   1 doc 604: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/National_Collegiate_Athletic_Association.html
+score   1 doc 594: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Congregational_church.html
+score   1 doc 583: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Methodist.html
+score   1 doc 578: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Sir_John_Wentworth%2c_1st_Baronet.html
+score   1 doc 571: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Supreme_Court_of_the_United_States.html
+score   1 doc 564: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/College_admissions_in_the_United_States.html
+score   1 doc 531: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Thesis.html
+score   1 doc 526: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Academic_term.html
+score   1 doc 524: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Dwight_D.html
+score   1 doc 516: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Georgian_architecture.html
+score   1 doc 477: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Yahoo%21.html
+score   1 doc 475: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/E-mail.html
+score   1 doc 467: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Seal_of_Dartmouth_College.html
+score   1 doc 454: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Salmon_P.html
+score   1 doc 449: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/United_States_House_of_Representatives.html
+score   1 doc 444: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Timothy_Geithner.html
+score   1 doc 412: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Joseph_Smith.html
+score   1 doc 411: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/LDS_Church.html
+score   1 doc 373: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/The_Sting.html
+score   1 doc 321: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Rowing_(sport).html
+score   1 doc 284: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Dartmouth_pong.html
+score   1 doc 243: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Union_Dutchmen.html
+score   1 doc 199: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Power_of_two.html
+score   1 doc 149: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/C%2b%2b11.html
+score   1 doc 127: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Data_structure.html
+score   1 doc 114: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Artificial_intelligence.html
+score   1 doc  53: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Linear_search.html
+score   1 doc  45: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Self-organizing_list.html
+score   1 doc  24: http://old-www.cs.dartmouth.edu/~cs50/data/tse/wikipedia/Sparse_array.html
+-----------------------------------------------
+Error: bad character '-' in query.
+Error: bad character '-' in query.
+
+
+run test from fuzzquery toscrape-index-2
+Query: incessantly catholic 
+No documents match.
+-----------------------------------------------
+Query: drugs revealing fisher 
+No documents match.
+-----------------------------------------------
+Query: mysterious or alexander and penetrating 
+score   2 doc 514: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/codename-baboushka-volume-1-the-conclave-of-death_887/index.html
+score   2 doc 435: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-regional-office-is-under-attack_858/index.html
+score   2 doc 355: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/thirteen-reasons-why_866/index.html
+score   2 doc 333: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-last-girl-the-dominion-trilogy-1_70/index.html
+score   2 doc 306: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/rook_647/index.html
+score   2 doc 284: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/a-shard-of-ice-the-black-symphony-saga-1_558/index.html
+score   2 doc 260: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/dont-get-caught_687/index.html
+score   2 doc 249: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-fabric-of-the-cosmos-space-time-and-the-texture-of-reality_572/index.html
+score   1 doc 554: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/category/books/mystery_3/page-2.html
+score   1 doc 549: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/mrs-houdini_821/index.html
+score   1 doc 476: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-wedding-dress_864/index.html
+score   1 doc 445: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/ive-got-your-number_173/index.html
+score   1 doc 441: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/private-paris-private-10_958/index.html
+score   1 doc 439: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/thirst_946/index.html
+score   1 doc 423: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/eligible-the-austen-project-4_692/index.html
+score   1 doc 416: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/twenty-yawns_773/index.html
+score   1 doc 406: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-wild-robot_288/index.html
+score   1 doc 324: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-torch-is-passed-a-harding-family-story_945/index.html
+score   1 doc 287: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/city-of-glass-the-mortal-instruments-3_678/index.html
+score   1 doc  95: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/give-it-back_430/index.html
+score   1 doc  83: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/if-i-gave-you-gods-phone-number-searching-for-spirituality-in-america_564/index.html
+score   1 doc  10: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/sophies-world_966/index.html
+-----------------------------------------------
+Query: incorporate coffin or alvin and heath 
+No documents match.
+-----------------------------------------------
+Query: row dust and survey 
+No documents match.
+-----------------------------------------------
+Query: builds and industry and reinvent harder 
+No documents match.
+-----------------------------------------------
+Query: satin or behind or oregon bordering invited pichurim 
+score   9 doc  70: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-girl-you-left-behind-the-girl-you-left-behind-1_443/index.html
+score   6 doc 229: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/leave-this-song-behind-teen-poetry-at-its-best_474/index.html
+score   4 doc 438: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-murder-that-never-was-forensic-instincts-5_939/index.html
+score   3 doc   6: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/behind-closed-doors_962/index.html
+score   2 doc 563: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/murder-at-the-42nd-street-library-raymond-ambler-1_624/index.html
+score   2 doc 550: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-house-by-the-lake_846/index.html
+score   2 doc 545: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/a-paris-apartment_612/index.html
+score   2 doc 468: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/off-the-hook-fishing-for-trouble-1_601/index.html
+score   2 doc 447: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/something-borrowed-darcy-rachel-1_224/index.html
+score   2 doc 370: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/kill-em-and-leave-searching-for-james-brown-and-the-american-soul_528/index.html
+score   2 doc 284: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/a-shard-of-ice-the-black-symphony-saga-1_558/index.html
+score   2 doc 279: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-mistake-off-campus-2_851/index.html
+score   2 doc 278: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-matchmakers-playbook-wingmen-inc-1_850/index.html
+score   2 doc 140: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-nerdy-nummies-cookbook-sweet-treats-for-the-geek-in-all-of-us_853/index.html
+score   2 doc 134: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/barefoot-contessa-back-to-basics_667/index.html
+score   2 doc   7: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/in-a-dark-dark-wood_963/index.html
+score   1 doc 585: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/category/books_1/page-2.html
+score   1 doc 556: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-bachelor-girls-guide-to-murder-herringford-and-watts-mysteries-1_491/index.html
+score   1 doc 530: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/this-one-summer_947/index.html
+score   1 doc 518: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/i-hate-fairyland-vol-1-madly-ever-after-i-hate-fairyland-compilations-1-5_899/index.html
+score   1 doc 346: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/join_902/index.html
+score   1 doc 311: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/cell_674/index.html
+score   1 doc 297: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/avatar-the-last-airbender-smoke-and-shadow-part-3-smoke-and-shadow-3_881/index.html
+score   1 doc 248: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/diary-of-a-citizen-scientist-chasing-tiger-beetles-and-other-new-ways-of-engaging-the-world_517/index.html
+score   1 doc 228: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-collected-poems-of-wb-yeats-the-collected-works-of-wb-yeats-1_441/index.html
+score   1 doc 227: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-crossover_398/index.html
+score   1 doc 226: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/booked_365/index.html
+score   1 doc 225: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/twenty-love-poems-and-a-song-of-despair_91/index.html
+score   1 doc 224: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/category/books/poetry_23/index.html
+score   1 doc 223: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/vampire-knight-vol-1-vampire-knight-1_93/index.html
+score   1 doc 213: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-lucifer-effect-understanding-how-good-people-turn-evil_758/index.html
+score   1 doc 202: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/approval-junkie-adventures-in-caring-too-much_363/index.html
+score   1 doc 170: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/needful-things_334/index.html
+score   1 doc 164: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/house-of-leaves_169/index.html
+score   1 doc 116: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-third-wave-an-entrepreneurs-vision-of-the-future_862/index.html
+score   1 doc 114: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/shoe-dog-a-memoir-by-the-creator-of-nike_831/index.html
+score   1 doc 111: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-art-of-startup-fundraising_606/index.html
+score   1 doc 101: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/benjamin-franklin-an-american-life_460/index.html
+score   1 doc  98: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/you-you-1_784/index.html
+score   1 doc  97: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-guilty-will-robie-4_750/index.html
+score   1 doc  96: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-14th-colony-cotton-malone-11_744/index.html
+score   1 doc  95: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/give-it-back_430/index.html
+score   1 doc  94: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/killing-floor-jack-reacher-1_382/index.html
+score   1 doc  93: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-bone-hunters-lexy-vaughan-steven-macaulay-2_343/index.html
+score   1 doc  90: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/category/books/thriller_37/index.html
+score   1 doc  52: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/equal-is-unfair-americas-misguided-fight-against-income-inequality_617/index.html
+score   1 doc  43: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/tipping-the-velvet_999/index.html
+score   1 doc  22: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/foolproof-preserving-a-guide-to-small-batch-jams-jellies-pickles-condiments-and-more-a-foolproof-guide-to-making-small-batch-jams-jellies-pickles-condiments-and-more_978/index.html
+score   1 doc  18: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/americas-cradle-of-quarterbacks-western-pennsylvanias-football-factory-from-johnny-unitas-to-joe-montana_974/index.html
+score   1 doc  16: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/worlds-elsewhere-journeys-around-shakespeares-globe_972/index.html
+score   1 doc  15: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/wall-and-piece_971/index.html
+score   1 doc  11: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-bear-and-the-piano_967/index.html
+score   1 doc   2: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/page-2.html
+score   1 doc 476: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/the-wedding-dress_864/index.html
+-----------------------------------------------
+Query: wade or heat or dime 
+score   6 doc 338: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/ready-player-one_209/index.html
+score   2 doc 424: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/i-am-pilgrim-pilgrim-1_703/index.html
+score   2 doc 173: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/red-dragon-hannibal-lecter-1_390/index.html
+score   1 doc 328: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/sugar-rush-offensive-line-2_108/index.html
+score   1 doc 475: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/suddenly-in-love-lake-haven-1_835/index.html
+score   1 doc 439: http://old-www.cs.dartmouth.edu/~cs50/data/tse/toscrape/catalogue/thirst_946/index.html
+-----------------------------------------------
+Error: bad character '-' in query.
+Error: bad character '-' in query.

@@ -1,0 +1,53 @@
+test usage syntax errors
+test no argsusage: ./indexer pageDirectory indexFilename
+
+test no file nameusage: ./indexer pageDirectory indexFilename
+
+test not writbale directory../wrong is not a directory
+
+run test
+./indexer ../data index.txt
+./indextest index.txt index.new
+
+
+diff input and output index file
+1,7c1,3
+< a  2 1 1 1
+< for  2 1 1 1
+< this  2 1
+< home  2 1
+< <title>home</title>  2 1
+< href=b.html>b</a>  1 1
+< cs50  2 1
+---
+> </html>  1 1 2 1
+> a  1 1 2 1
+> the  2 1
+9c5,6
+< <html>  2 1 1 1
+---
+> tse  2 1
+> is  1 1 2 1
+11c8
+< is  2 1 1 1
+---
+> href=b.html>b</a>  1 1
+13,14c10
+< the  2 1
+< href=https://en.wikipedia.org/wiki/algorithm>algorithm</a>.  1 1
+---
+> <html>  1 1 2 1
+16c12,17
+< <a  2 1 1 3
+---
+> href=https://en.wikipedia.org/wiki/algorithm>algorithm</a>.  1 1
+> <title>home</title>  2 1
+> this  2 1
+> cs50  2 1
+> home  2 1
+> for  1 1 2 1
+18,19c19
+< tse  2 1
+< </html>  2 1 1 1
+---
+> <a  1 3 2 1
